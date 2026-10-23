@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bvu74fyk54ye1"]
+
+[ext_resource type="Script" uid="uid://demftfa7rcikq" path="res://cenas/lutador.gd" id="1_q6irk"]
+[ext_resource type="Texture2D" uid="uid://c1xll62a2x3tv" path="res://artes/personagens/guarana/idle.png" id="2_uk8y1"]
+
+[node name="Lutador" type="Node2D" unique_id=914678700]
+script = ExtResource("1_q6irk")
+
+[node name="Visual" type="Node2D" parent="." unique_id=2041273094]
+scale = Vector2(0.25, 0.25)
+
+[node name="Corpo" type="Sprite2D" parent="Visual" unique_id=661952632]
+texture = ExtResource("2_uk8y1")

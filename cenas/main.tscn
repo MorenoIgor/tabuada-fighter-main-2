@@ -1,0 +1,245 @@
+[gd_scene format=3 uid="uid://ternn8uvr8uq"]
+
+[ext_resource type="Script" uid="uid://dynaq2eiou06p" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Texture2D" uid="uid://f6hg5cc1nllm" path="res://artes/fundos/df6qxog-35463deb-118c-4e87-8c6d-eb574b39cdc1.jpg" id="2_b30p5"]
+[ext_resource type="PackedScene" path="res://cenas/calculadora.tscn" id="2_calc"]
+[ext_resource type="PackedScene" uid="uid://bvu74fyk54ye1" path="res://cenas/lutador.tscn" id="3_4fhxt"]
+
+[sub_resource type="StyleBoxFlat" id="E_barra_fundo"]
+bg_color = Color(0.2, 0.2, 0.25, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="E_vida_p1"]
+bg_color = Color(0.3, 0.64, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="E_vida_p2"]
+bg_color = Color(1, 0.36, 0.36, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="E_tempo"]
+bg_color = Color(0.95, 0.95, 0.95, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_4fhxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b30p5"]
+resource_name = "zoom_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_5wwvk"]
+resource_name = "zoom_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wwvk"]
+_data = {
+&"RESET": SubResource("Animation_4fhxt"),
+&"zoom_in": SubResource("Animation_b30p5"),
+&"zoom_out": SubResource("Animation_5wwvk")
+}
+
+[node name="Main" type="Control" unique_id=887372445]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Fundo_Imagem" type="Sprite2D" parent="." unique_id=276786069]
+position = Vector2(640, 360)
+texture = ExtResource("2_b30p5")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=862969494]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.09, 0.12, 1)
+
+[node name="LutadorP1" parent="." unique_id=914678700 instance=ExtResource("3_4fhxt")]
+unique_name_in_owner = true
+position = Vector2(420, 445)
+
+[node name="LutadorP2" parent="." unique_id=989251341 instance=ExtResource("3_4fhxt")]
+unique_name_in_owner = true
+position = Vector2(860, 445)
+player2 = true
+
+[node name="UI" type="Control" parent="." unique_id=1585384715]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VidaP1" type="ProgressBar" parent="UI" unique_id=1501601341]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 480.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("E_barra_fundo")
+theme_override_styles/fill = SubResource("E_vida_p1")
+max_value = 5.0
+value = 3.0
+show_percentage = false
+
+[node name="TextoVidaP1" type="Label" parent="UI" unique_id=241268998]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 66.0
+offset_right = 480.0
+offset_bottom = 92.0
+text = "Goat do mal"
+
+[node name="VidaP2" type="ProgressBar" parent="UI" unique_id=1129476760]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 800.0
+offset_top = 24.0
+offset_right = 1240.0
+offset_bottom = 60.0
+theme_override_styles/background = SubResource("E_barra_fundo")
+theme_override_styles/fill = SubResource("E_vida_p2")
+max_value = 5.0
+value = 3.0
+fill_mode = 1
+show_percentage = false
+
+[node name="TextoVidaP2" type="Label" parent="UI" unique_id=2093792488]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 66.0
+offset_right = 1240.0
+offset_bottom = 92.0
+text = "Italo Guimaraes"
+horizontal_alignment = 2
+
+[node name="CalculadoraP1" parent="UI" unique_id=1278040676 instance=ExtResource("2_calc")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 140.0
+offset_right = 270.0
+offset_bottom = 444.0
+
+[node name="CalculadoraP2" parent="UI" unique_id=429579361 instance=ExtResource("2_calc")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 140.0
+offset_right = 1240.0
+offset_bottom = 444.0
+cor_destaque = Color(1, 0.36, 0.36, 1)
+
+[node name="Conta" type="Label" parent="UI" unique_id=491235530]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 130.0
+offset_right = 840.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 110
+text = "5 × 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BarraTempo" type="ProgressBar" parent="UI" unique_id=625609052]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 519.0
+offset_top = 300.0
+offset_right = 819.0
+offset_bottom = 326.0
+scale = Vector2(0.8, 0.8)
+theme_override_styles/background = SubResource("E_barra_fundo")
+theme_override_styles/fill = SubResource("E_tempo")
+max_value = 8.0
+value = 5.5
+show_percentage = false
+
+[node name="TextoTempo" type="Label" parent="UI" unique_id=1766078026]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 332.0
+offset_right = 840.0
+offset_bottom = 358.0
+text = "T E M P O"
+horizontal_alignment = 1
+
+[node name="Mensagem" type="Label" parent="UI" unique_id=1234571626]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 390.0
+offset_right = 840.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Camera" type="Camera2D" parent="." unique_id=878090152]
+position = Vector2(640, 360)
+
+[node name="CameraZoomPlayer" type="AnimationPlayer" parent="." unique_id=735793216]
+libraries/ = SubResource("AnimationLibrary_5wwvk")
