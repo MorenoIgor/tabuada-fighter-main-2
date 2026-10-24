@@ -19,6 +19,8 @@ var controles: Array[Dictionary] = [
 		"mover": {
 			KEY_W: Vector2i(0, -1), KEY_S: Vector2i(0, 1),
 			KEY_A: Vector2i(-1, 0), KEY_D: Vector2i(1, 0),
+			11: Vector2i(0, -1), 12: Vector2i(0, 1),
+			13: Vector2i(-1, 0), 14: Vector2i(1, 0),
 		},
 		"confirmar": [KEY_SPACE],
 	},
@@ -26,6 +28,8 @@ var controles: Array[Dictionary] = [
 		"mover": {
 			KEY_UP: Vector2i(0, -1), KEY_DOWN: Vector2i(0, 1),
 			KEY_LEFT: Vector2i(-1, 0), KEY_RIGHT: Vector2i(1, 0),
+			21: Vector2i(0, -1), 22: Vector2i(0, 1),
+			23: Vector2i(-1, 0), 24: Vector2i(1, 0),
 		},
 		"confirmar": [KEY_ENTER, KEY_KP_ENTER],
 	},
@@ -196,10 +200,18 @@ func _fim_de_jogo(vencedor: int) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	var e := event as InputEventKey
-	if e == null or not e.pressed or e.echo:
-		return
-	var tecla: int = e.physical_keycode
+	var tecla
+	if event is InputEventKey and event.pressed:
+		tecla = event.physical_keycode
+	if event is InputEventJoypadButton and event.pressed:
+		if event.button_index>10:
+			tecla = event.button_index
+			tecla += event.device * 10 #GAMBIARRAAAAAAAAAAAAAAAAA
+		else:
+			if event.device == 0:
+				tecla = KEY_SPACE
+			else:
+				tecla = KEY_KP_ENTER
 
 	if estado == Estado.FIM_DE_JOGO:
 		if pode_reiniciar and (tecla == KEY_SPACE or tecla == KEY_ENTER or tecla == KEY_KP_ENTER):
@@ -274,7 +286,7 @@ func contagem_regressiva():
 	await get_tree().create_timer(1).timeout
 	%Conta.text = "1"
 	await get_tree().create_timer(1).timeout
-	%Conta.text = "LUTEM!"
+	%Conta.text = "JÁ!"
 	await get_tree().create_timer(1).timeout
 	
 	contagem_regressiva_finalizada.emit()

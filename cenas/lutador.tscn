@@ -3,11 +3,83 @@
 [ext_resource type="Script" uid="uid://demftfa7rcikq" path="res://cenas/lutador.gd" id="1_q6irk"]
 [ext_resource type="Texture2D" uid="uid://c1xll62a2x3tv" path="res://artes/personagens/guarana/idle.png" id="2_uk8y1"]
 
+[sub_resource type="Animation" id="Animation_q6irk"]
+resource_name = "IDLE"
+length = 0.96666664
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.25, 0.245, 0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uk8y1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqucl"]
+_data = {
+&"IDLE": SubResource("Animation_q6irk"),
+&"RESET": SubResource("Animation_uk8y1")
+}
+
 [node name="Lutador" type="Node2D" unique_id=914678700]
 script = ExtResource("1_q6irk")
 
 [node name="Visual" type="Node2D" parent="." unique_id=2041273094]
 scale = Vector2(0.25, 0.25)
 
+[node name="Sombra" type="Sprite2D" parent="Visual" unique_id=1021006402]
+self_modulate = Color(0, 0, 0, 0.5019608)
+position = Vector2(183.10199, 752.898)
+scale = Vector2(1, 0.272799)
+skew = 0.7853982
+texture = ExtResource("2_uk8y1")
+
 [node name="Corpo" type="Sprite2D" parent="Visual" unique_id=661952632]
 texture = ExtResource("2_uk8y1")
+
+[node name="Animador" type="AnimationPlayer" parent="." unique_id=1360050088]
+libraries/ = SubResource("AnimationLibrary_gqucl")

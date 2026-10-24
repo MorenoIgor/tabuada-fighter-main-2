@@ -102,7 +102,8 @@ grow_vertical = 2
 script = ExtResource("1_main")
 
 [node name="Fundo_Imagem" type="Sprite2D" parent="." unique_id=276786069]
-position = Vector2(640, 360)
+position = Vector2(640, 170.5)
+scale = Vector2(1, 1.5263888)
 texture = ExtResource("2_b30p5")
 
 [node name="Fundo" type="ColorRect" parent="." unique_id=862969494]

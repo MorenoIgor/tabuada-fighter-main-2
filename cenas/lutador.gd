@@ -21,17 +21,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	position.x += vel_x
+	$Visual/Sombra.texture = $Visual/Corpo.texture
+	
 	
 func atacar(anim):
 	position.x += deslocamento * sign($Visual.scale.x)
 	vel_x = 0.5 * sign($Visual.scale.x)
 	$Visual/Corpo.texture = load("res://artes/personagens/"+nome_personagem_interno+"/attack_"+str(anim)+".png")
+	$Animador.stop()
 
 func tomar_dano():
 	$Visual/Corpo.texture = load("res://artes/personagens/"+nome_personagem_interno+"/damage.png")
 	vel_x = -0.5 * sign($Visual.scale.x)
+	$Animador.stop()
 
 func reset():
 	$Visual/Corpo.texture = load("res://artes/personagens/"+nome_personagem_interno+"/idle.png")
 	position.x = posicao_inicial
 	vel_x = 0
+	$Animador.play("IDLE")
