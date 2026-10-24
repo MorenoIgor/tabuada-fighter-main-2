@@ -66,7 +66,7 @@ func _iniciar_jogo() -> void:
 	%Conta.visible = true
 	
 	
-	contagem_regressiva(3)
+	contagem_regressiva(3,"JÁ!")
 	await contagem_regressiva_finalizada
 	
 	vida = [vida_maxima, vida_maxima]
@@ -279,11 +279,11 @@ func camera_shake(intensidade):
 		
 	$Camera.offset = Vector2.ZERO
 
-func contagem_regressiva(numero):
+func contagem_regressiva(numero,frase):
 	for c in range(numero,0,-1):
 		%Conta.text = str(c)
 		await get_tree().create_timer(1).timeout
-	%Conta.text = "JÁ!"
+	%Conta.text = frase
 	await get_tree().create_timer(1).timeout
 	
 	contagem_regressiva_finalizada.emit()
