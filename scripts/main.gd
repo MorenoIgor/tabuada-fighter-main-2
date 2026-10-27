@@ -148,6 +148,7 @@ func _process(delta: float) -> void:
 
 func _ao_acabar_tempo() -> void:
 	estado = Estado.FIM_DE_RODADA
+	%Conta.visible = false
 	rotulo_mensagem.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
 	rotulo_mensagem.text = "Tempo esgotado!\n%s = %d" % [texto_conta, resposta]
 	_proxima_rodada_apos_pausa()
