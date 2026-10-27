@@ -73,7 +73,7 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Sombra" type="Sprite2D" parent="Visual" unique_id=1021006402]
 self_modulate = Color(0, 0, 0, 0.5019608)
-position = Vector2(183.10199, 752.898)
+position = Vector2(184, 740)
 scale = Vector2(1, 0.272799)
 skew = 0.7853982
 texture = ExtResource("2_uk8y1")

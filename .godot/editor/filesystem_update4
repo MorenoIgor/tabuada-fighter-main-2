@@ -1,4 +1,3 @@
-res://cenas/lutador.tscn
-res://cenas/lutador.gd
-res://cenas/main.tscn
+res://cenas/selecao.gd
+res://cenas/selecao.tscn
 res://scripts/main.gd

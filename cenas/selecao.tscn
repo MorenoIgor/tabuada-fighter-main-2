@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://du7ok6vne28xx"]
+
+[ext_resource type="Script" uid="uid://v1a2ys1gjv78" path="res://cenas/selecao.gd" id="1_31pbs"]
+[ext_resource type="Texture2D" uid="uid://f6hg5cc1nllm" path="res://artes/fundos/df6qxog-35463deb-118c-4e87-8c6d-eb574b39cdc1.jpg" id="1_jmqi3"]
+[ext_resource type="PackedScene" uid="uid://bvu74fyk54ye1" path="res://cenas/lutador.tscn" id="2_31pbs"]
+[ext_resource type="FontFile" uid="uid://bkofygsv5d3on" path="res://fontes/Ode-Erik.TTF" id="4_kejmr"]
+[ext_resource type="Texture2D" uid="uid://dkla8fu63c017" path="res://artes/ui/controller_xboxone.png" id="5_c5uxq"]
+[ext_resource type="Texture2D" uid="uid://cw1bdj6osc8tx" path="res://artes/ui/xbox_dpad.png" id="6_cl5gd"]
+[ext_resource type="FontFile" uid="uid://neyomc5kbn60" path="res://fontes/omegaflightbold.ttf" id="7_cl5gd"]
+[ext_resource type="Texture2D" uid="uid://cx5p6hhvleq4e" path="res://artes/ui/xbox_button_back_icon.png" id="8_0ky52"]
+[ext_resource type="Texture2D" uid="uid://cfxmdxe3p674r" path="res://artes/ui/xbox_button_start_icon.png" id="9_6voa2"]
+
+[node name="Selecao" type="Control" unique_id=21496076]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_31pbs")
+
+[node name="Fundo_Imagem" type="Sprite2D" parent="." unique_id=1031637767]
+z_index = -10
+position = Vector2(640, 170.5)
+scale = Vector2(1, 1.5263888)
+texture = ExtResource("1_jmqi3")
+
+[node name="LutadorP1" parent="." unique_id=914678700 instance=ExtResource("2_31pbs")]
+unique_name_in_owner = true
+position = Vector2(288, 445)
+
+[node name="LutadorP2" parent="." unique_id=1937777436 instance=ExtResource("2_31pbs")]
+unique_name_in_owner = true
+position = Vector2(992, 445)
+player2 = true
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1276986934]
+unique_name_in_owner = true
+position = Vector2(640, 360)
+ignore_rotation = false
+
+[node name="TextoNomeP1" type="Label" parent="." unique_id=1268607209]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 71.0
+offset_top = 85.0
+offset_right = 511.0
+offset_bottom = 129.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_kejmr")
+theme_override_font_sizes/font_size = 42
+text = "Goat do mal"
+horizontal_alignment = 1
+
+[node name="TextoNomeP2" type="Label" parent="." unique_id=1190780270]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 771.0
+offset_top = 85.0
+offset_right = 1211.0
+offset_bottom = 129.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_kejmr")
+theme_override_font_sizes/font_size = 42
+text = "Italo Guimaraes"
+horizontal_alignment = 1
+
+[node name="TextoProntoP1" type="Label" parent="." unique_id=1181314446]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 71.0
+offset_top = 42.0
+offset_right = 511.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 1, 0.23137255, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_kejmr")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextoProntoP2" type="Label" parent="." unique_id=1340618825]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 771.0
+offset_top = 42.0
+offset_right = 1211.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 1, 0.23137255, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_kejmr")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GamePadLeft" type="TextureRect" parent="." unique_id=1178847932]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 480.0
+offset_top = 580.0
+offset_right = 608.0
+offset_bottom = 708.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_c5uxq")
+
+[node name="DPad" type="TextureRect" parent="GamePadLeft" unique_id=1721819620]
+layout_mode = 0
+offset_left = -92.00001
+offset_top = 12.999999
+offset_right = 35.999992
+offset_bottom = 141.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_cl5gd")
+
+[node name="GamePadRight" type="TextureRect" parent="." unique_id=943916049]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 768.0
+offset_top = 580.0
+offset_right = 896.0
+offset_bottom = 708.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_c5uxq")
+
+[node name="DPad" type="TextureRect" parent="GamePadRight" unique_id=1649923910]
+layout_mode = 0
+offset_left = -92.00001
+offset_top = 12.999999
+offset_right = 35.999992
+offset_bottom = 141.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_cl5gd")
+
+[node name="Mensagem" type="Label" parent="." unique_id=1857530832]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 435.0
+offset_top = 296.0
+offset_right = 835.0
+offset_bottom = 406.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("7_cl5gd")
+theme_override_font_sizes/font_size = 48
+text = "ESCOLHA
+SEU LUTADOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="XboxButtonBackIcon" type="Sprite2D" parent="." unique_id=783347091]
+position = Vector2(258, 171)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_0ky52")
+
+[node name="XboxButtonStartIcon" type="Sprite2D" parent="." unique_id=1466957846]
+position = Vector2(318, 171)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6voa2")
+
+[node name="XboxButtonBackIcon2" type="Sprite2D" parent="." unique_id=751405153]
+position = Vector2(969, 171)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_0ky52")
+
+[node name="XboxButtonStartIcon2" type="Sprite2D" parent="." unique_id=375557207]
+position = Vector2(1029, 171)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_6voa2")

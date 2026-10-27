@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dynaq2eiou06p" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Texture2D" uid="uid://f6hg5cc1nllm" path="res://artes/fundos/df6qxog-35463deb-118c-4e87-8c6d-eb574b39cdc1.jpg" id="2_b30p5"]
-[ext_resource type="PackedScene" path="res://cenas/calculadora.tscn" id="2_calc"]
+[ext_resource type="PackedScene" uid="uid://bmxccj6m3bocx" path="res://cenas/calculadora.tscn" id="2_calc"]
 [ext_resource type="PackedScene" uid="uid://bvu74fyk54ye1" path="res://cenas/lutador.tscn" id="3_4fhxt"]
+[ext_resource type="FontFile" uid="uid://bkofygsv5d3on" path="res://fontes/Ode-Erik.TTF" id="5_5wwvk"]
+[ext_resource type="FontFile" uid="uid://dah21ju04s0ro" path="res://fontes/omegaflighttitle.ttf" id="6_bhvw8"]
+[ext_resource type="FontFile" uid="uid://neyomc5kbn60" path="res://fontes/omegaflightbold.ttf" id="7_1yycb"]
+[ext_resource type="Texture2D" uid="uid://dkla8fu63c017" path="res://artes/ui/controller_xboxone.png" id="7_v1d1r"]
+[ext_resource type="Texture2D" uid="uid://cw1bdj6osc8tx" path="res://artes/ui/xbox_dpad.png" id="8_1yycb"]
 
 [sub_resource type="StyleBoxFlat" id="E_barra_fundo"]
 bg_color = Color(0.2, 0.2, 0.25, 1)
@@ -102,6 +107,7 @@ grow_vertical = 2
 script = ExtResource("1_main")
 
 [node name="Fundo_Imagem" type="Sprite2D" parent="." unique_id=276786069]
+z_index = -10
 position = Vector2(640, 170.5)
 scale = Vector2(1, 1.5263888)
 texture = ExtResource("2_b30p5")
@@ -149,6 +155,9 @@ offset_left = 40.0
 offset_top = 66.0
 offset_right = 480.0
 offset_bottom = 92.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_5wwvk")
+theme_override_font_sizes/font_size = 42
 text = "Goat do mal"
 
 [node name="VidaP2" type="ProgressBar" parent="UI" unique_id=1129476760]
@@ -171,6 +180,9 @@ offset_left = 800.0
 offset_top = 66.0
 offset_right = 1240.0
 offset_bottom = 92.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_5wwvk")
+theme_override_font_sizes/font_size = 42
 text = "Italo Guimaraes"
 horizontal_alignment = 2
 
@@ -198,7 +210,11 @@ offset_left = 440.0
 offset_top = 130.0
 offset_right = 840.0
 offset_bottom = 290.0
-theme_override_font_sizes/font_size = 110
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_fonts/font = ExtResource("5_5wwvk")
+theme_override_font_sizes/font_size = 150
 text = "5 × 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -224,23 +240,66 @@ offset_left = 440.0
 offset_top = 332.0
 offset_right = 840.0
 offset_bottom = 358.0
+theme_override_fonts/font = ExtResource("6_bhvw8")
+theme_override_font_sizes/font_size = 24
 text = "T E M P O"
 horizontal_alignment = 1
 
 [node name="Mensagem" type="Label" parent="UI" unique_id=1234571626]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 440.0
-offset_top = 390.0
-offset_right = 840.0
-offset_bottom = 500.0
-theme_override_font_sizes/font_size = 24
+offset_left = 435.0
+offset_top = 148.0
+offset_right = 835.0
+offset_bottom = 258.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("7_1yycb")
+theme_override_font_sizes/font_size = 48
+text = "AAAAAAAAAAA"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="GamePadLeft" type="TextureRect" parent="UI" unique_id=1919249039]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 127.0
+offset_top = 448.0
+offset_right = 255.0
+offset_bottom = 576.0
+texture = ExtResource("7_v1d1r")
+
+[node name="DPad" type="TextureRect" parent="UI/GamePadLeft" unique_id=1143747540]
+layout_mode = 0
+offset_left = -92.00001
+offset_top = 12.999999
+offset_right = 35.999992
+offset_bottom = 141.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_1yycb")
+
+[node name="GamePadRight" type="TextureRect" parent="UI" unique_id=1363188288]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1097.0
+offset_top = 448.0
+offset_right = 1225.0
+offset_bottom = 576.0
+texture = ExtResource("7_v1d1r")
+
+[node name="DPad" type="TextureRect" parent="UI/GamePadRight" unique_id=194406746]
+layout_mode = 0
+offset_left = -92.00001
+offset_top = 12.999999
+offset_right = 35.999992
+offset_bottom = 141.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_1yycb")
+
 [node name="Camera" type="Camera2D" parent="." unique_id=878090152]
+unique_name_in_owner = true
 position = Vector2(640, 360)
+ignore_rotation = false
 
 [node name="CameraZoomPlayer" type="AnimationPlayer" parent="." unique_id=735793216]
 libraries/ = SubResource("AnimationLibrary_5wwvk")

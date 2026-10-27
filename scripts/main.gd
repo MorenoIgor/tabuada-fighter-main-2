@@ -64,6 +64,8 @@ func _iniciar_jogo() -> void:
 	%BarraTempo.visible = false
 	%TextoTempo.visible = false
 	%Conta.visible = true
+	%GamePadLeft.visible = false
+	%GamePadRight.visible = false
 	
 	
 	contagem_regressiva(3,"JÁ!")
@@ -80,6 +82,8 @@ func _iniciar_jogo() -> void:
 	%CalculadoraP2.visible = true
 	%BarraTempo.visible = true
 	%TextoTempo.visible = true
+	%GamePadLeft.visible = true
+	%GamePadRight.visible = true
 	estado = Estado.JOGANDO
 	_nova_conta()
 
@@ -171,6 +175,8 @@ func _pontuar(atacante: int) -> void:
 	%Conta.visible = false
 	%BarraTempo.visible = false
 	%TextoTempo.visible = false
+	%GamePadLeft.visible = false
+	%GamePadRight.visible = false
 
 	if vida[vitima] <= 0:
 		_fim_de_jogo(atacante)
@@ -190,7 +196,10 @@ func _fim_de_jogo(vencedor: int) -> void:
 	estado = Estado.FIM_DE_JOGO
 	for c in calculadoras:
 		c.travada = true
-	rotulo_mensagem.text = "JOGADOR %d VENCEU!\nEspaço ou Enter para jogar de novo" % (vencedor + 1)
+	rotulo_mensagem.text = "JOGADOR %d \nVENCEU!" % (vencedor + 1)
+	
+	if barras_vida[vencedor].value == barras_vida[vencedor].max_value:
+		rotulo_mensagem.text += "\n\n PERFECT"
 	
 	%CalculadoraP1.visible = false
 	%CalculadoraP2.visible = false
@@ -215,7 +224,8 @@ func _input(event: InputEvent) -> void:
 
 	if estado == Estado.FIM_DE_JOGO:
 		if pode_reiniciar and (tecla == KEY_SPACE or tecla == KEY_ENTER or tecla == KEY_KP_ENTER):
-			cold_start()
+			#cold_start()
+			get_tree().change_scene_to_file("res://cenas/selecao.tscn")
 		return
 	if estado != Estado.JOGANDO:
 		return
