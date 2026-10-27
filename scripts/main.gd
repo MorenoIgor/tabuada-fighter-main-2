@@ -7,7 +7,7 @@ signal zoom_terminado
 enum Estado { JOGANDO, FIM_DE_RODADA, FIM_DE_JOGO, COUNTDOWN }
 
 var vida_maxima: int = 5
-var tempo_por_conta: float = 30.0
+var tempo_por_conta: float = 15.0
 var fator_min: int = 2
 var fator_max: int = 9
 var pausa_entre_contas: float = 1.3
