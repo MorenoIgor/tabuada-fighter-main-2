@@ -38,10 +38,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton and event.pressed:
 		if event.button_index>10:
 			tecla = event.button_index
+			print(tecla)
 			match tecla:
-				12:
-					trocar_lutador(event.device,-1)
 				13:
+					trocar_lutador(event.device,-1)
+				14:
 					trocar_lutador(event.device,1)
 		else:
 			selecionador_lutador(event.device)

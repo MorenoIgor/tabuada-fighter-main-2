@@ -6,7 +6,7 @@ signal zoom_terminado
 
 enum Estado { JOGANDO, FIM_DE_RODADA, FIM_DE_JOGO, COUNTDOWN }
 
-var vida_maxima: int = 1
+var vida_maxima: int = 5
 var tempo_por_conta: float = 30.0
 var fator_min: int = 2
 var fator_max: int = 9
@@ -67,6 +67,8 @@ func _iniciar_jogo() -> void:
 	%GamePadLeft.visible = false
 	%GamePadRight.visible = false
 	
+	%TextoVidaP1.text = Global.lutadores[Global.p1lutador]["nome"]
+	%TextoVidaP2.text = Global.lutadores[Global.p2lutador]["nome"]
 	
 	contagem_regressiva(3,"JÁ!")
 	await contagem_regressiva_finalizada
@@ -118,6 +120,8 @@ func _nova_conta() -> void:
 	%Conta.visible = true
 	%BarraTempo.visible = true
 	%TextoTempo.visible = true
+	%GamePadLeft.visible = false
+	%GamePadRight.visible = false
 	rotulo_conta.text = texto_conta
 	rotulo_mensagem.text = ""
 	tempo_restante = tempo_por_conta

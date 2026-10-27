@@ -1,3 +1,4 @@
-res://cenas/selecao.gd
-res://cenas/selecao.tscn
+res://cenas/main.tscn
 res://scripts/main.gd
+res://cenas/selecao.tscn
+res://cenas/selecao.gd

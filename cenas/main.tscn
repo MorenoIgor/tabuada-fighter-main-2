@@ -150,6 +150,7 @@ value = 3.0
 show_percentage = false
 
 [node name="TextoVidaP1" type="Label" parent="UI" unique_id=241268998]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 40.0
 offset_top = 66.0
@@ -175,6 +176,7 @@ fill_mode = 1
 show_percentage = false
 
 [node name="TextoVidaP2" type="Label" parent="UI" unique_id=2093792488]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 800.0
 offset_top = 66.0
